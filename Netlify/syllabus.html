@@ -1,294 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Course Hub</title>
+    <title>Course Hub</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --accent: #58a6ff;
+            --text: #f0f6fc;
+            --muted: #8b949e;
+        }
 
-:root{
---bg:#0d1117;
---card:#161b22;
---border:#30363d;
---accent:#58a6ff;
---text:#f0f6fc;
---muted:#8b949e;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        body {
+            font-family: Inter, sans-serif;
+            background: linear-gradient(180deg, #0d1117, #111827);
+            color: var(--text);
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
 
-body{
-font-family:Inter,sans-serif;
-background:linear-gradient(180deg,#0d1117,#111827);
-color:var(--text);
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-}
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-.header{
-text-align:center;
-margin-bottom:50px;
-}
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #58a6ff, #7ee787);
+            /* -webkit-background-clip:text; */
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
 
-.header h1{
-font-size:2.8rem;
-font-weight:700;
-background:linear-gradient(90deg,#58a6ff,#7ee787);
-/* -webkit-background-clip:text; */
--webkit-text-fill-color:transparent;
-margin-bottom:10px;
-}
+        .header p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
 
-.header p{
-color:var(--muted);
-font-size:1rem;
-}
+        .back {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--muted);
+            text-decoration: none;
+        }
 
-.back{
-display:inline-block;
-margin-bottom:25px;
-color:var(--muted);
-text-decoration:none;
-}
+        .back:hover {
+            color: white;
+        }
 
-.back:hover{
-color:white;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:25px;
-}
+        .card {
 
-.card{
+            background: rgba(22, 27, 34, .75);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            transition: .25s;
+        }
 
-background:rgba(22,27,34,.75);
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #58a6ff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .35);
+        }
 
-backdrop-filter:blur(14px);
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-border:1px solid var(--border);
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-border-radius:18px;
+        .link {
 
-padding:25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: #21262d;
+            color: var(--text);
+            text-decoration: none;
+            transition: .2s;
+        }
 
-transition:.25s;
-}
+        .link:hover {
+            background: #30363d;
+            padding-left: 22px;
+        }
 
-.card:hover{
+        .link span:last-child {
+            opacity: .5;
+        }
 
-transform:translateY(-6px);
-
-border-color:#58a6ff;
-
-box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-
-.card h2{
-font-size:1.3rem;
-margin-bottom:18px;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.links{
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
-.link{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:14px 16px;
-
-border-radius:10px;
-
-background:#21262d;
-
-color:var(--text);
-
-text-decoration:none;
-
-transition:.2s;
-}
-
-.link:hover{
-background:#30363d;
-padding-left:22px;
-}
-
-.link span:last-child{
-opacity:.5;
-}
-
-.footer{
-text-align:center;
-margin-top:50px;
-color:var(--muted);
-font-size:.9rem;
-}
-
-</style>
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<a href="index.html" class="back">← Back to Main Hub</a>
+    <a href="index.html" class="back">← Back to Main Hub</a>
+    <div class="header">
+        <h1>📚 Course Hub</h1>
+        <p>Quick access to course websites and useful tools.</p>
+    </div>
 
-<div class="header">
+    <div class="grid">
+        <div class="card">
+            <h2>📄 Official Curriculum</h2>
+            <div class="links">
 
-<h1>📚 Course Hub</h1>
+                <a class="link" href="https://courses.iitd.ac.in/programs/btech-computer-science-and-engineering" target="_blank">
+                    <span>IIT Delhi CSE Curriculum</span>
+                    <span>↗</span>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <h2>💻 Course Portals</h2>
+            <div class="links">
+                <a class="link" href="https://www.cse.iitd.ac.in/~ashishc/courses/col1101_diwali26/" target="_blank">
+                    <span>COL1101 Website</span>
+                    <span>↗</span>
+                </a>
+                <a class="link" href="https://exam.cse.iitd.ac.in" target="_blank">
+                    <span>COL1101 Moodle</span>
+                    <span>↗</span>
+                </a>
 
-<p>Quick access to syllabi, course websites and useful tools.</p>
+                <a class="link" href="https://piazza.com/iitd.ac.in/fall2026/col2010" target="_blank">
+                    <span>COL2010 Piazza</span>
+                    <span>↗</span>
+                </a>
+                <a class="link" href="https://www.cse.iitd.ac.in/~rijurekha/col215_2026.html" target="_blank">
+                    <span>COL2015 Website</span>
+                    <span>↗</span>
+                </a>
+                <a class="link" href="https://sites.google.com/view/amajee/teaching" target="_blank">
+                    <span>MTL2006 Website</span>
+                    <span>↗</span>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <h2>🛠 Tools</h2>
+            <div class="links">
+                <a class="link" href="https://edaplayground.com" target="_blank">
+                    <span>EDA Playground</span>
+                    <span>↗</span>
+                </a>
+            </div>
+        </div>
 
-</div>
+        <div class="card">
+            <h2>⭐ Quick Tips</h2>
+            <div class="links">
+                <div class="link">
+                    <span>Bookmark this page for one-click access.</span>
+                </div>
 
-<div class="grid">
-
-<div class="card">
-
-<h2>📄 Official Curriculum</h2>
-
-<div class="links">
-
-<a class="link"
-href="https://courses.iitd.ac.in/programs/btech-computer-science-and-engineering"
-target="_blank">
-
-<span>IIT Delhi CSE Curriculum</span>
-
-<span>↗</span>
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>💻 Course Portals</h2>
-
-<div class="links">
-
-<a class="link"
-href="https://www.cse.iitd.ac.in/~ashishc/courses/col1101_diwali26/"
-target="_blank">
-
-<span>COL1101 Website</span>
-
-<span>↗</span>
-
-</a>
-
-<a class="link"
-href="https://exam.cse.iitd.ac.in"
-target="_blank">
-
-<span>COL1101 Moodle</span>
-
-<span>↗</span>
-
-</a>
-
-<a class="link"
-href="https://piazza.com/iitd.ac.in/fall2026/col2010"
-target="_blank">
-
-<span>COL2010 Piazza</span>
-
-<span>↗</span>
-
-</a>
-
-<a class="link"
-href="https://www.cse.iitd.ac.in/~rijurekha/col215_2026.html"
-target="_blank">
-
-<span>COL2015 Website</span>
-
-<span>↗</span>
-
-</a>
-
-<a class="link"
-href="https://sites.google.com/view/amajee/teaching"
-target="_blank">
-
-<span>MTL2006 Website</span>
-
-<span>↗</span>
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>🛠 Tools</h2>
-
-<div class="links">
-
-<a class="link"
-href="https://edaplayground.com"
-target="_blank">
-
-<span>EDA Playground</span>
-
-<span>↗</span>
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>⭐ Quick Tips</h2>
-
-<div class="links">
-
-<div class="link">
-<span>Bookmark this page for one-click access.</span>
-</div>
-
-<div class="link">
-<span>Open links in a new tab.</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-
-Built for IIT Delhi CSE • Course Resource Hub
-
-</div>
-
+                <div class="link">
+                    <span>Open links in a new tab.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Built for IIT Delhi CSE • Course Resource Hub
+    </div>
 </body>
+
 </html>
