@@ -86,7 +86,7 @@ def build_operational_audit_schema() -> str:
     print("SCHEMA_VERIFICATION_IS_VALID: TRUE")
     return query
 
-build_operational_audit_schema()
+# build_operational_audit_schema()
 
 def extract_bounded_capacity_nodes(db_path: str, min_cap: float, max_cap: float) -> pd.DataFrame:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
