@@ -1,0 +1,136 @@
+{
+  "database": {
+    "db_path": "logistics_network.db"
+  },
+  "task_01": {},
+  "task_02": {
+    "db_path": "logistics_network.db",
+    "min_cap": 146247.75,
+    "max_cap": 168635.6
+  },
+  "task_03": {
+    "db_path": "logistics_network.db",
+    "status_flag": "Delivered"
+  },
+  "task_04": {
+    "db_path": "logistics_network.db",
+    "baseline_limit": 13693.39
+  },
+  "task_05": {
+    "db_path": "logistics_network.db",
+    "sku_id": "SKU-00399-327",
+    "node_id": 90
+  },
+  "task_06": {
+    "db_path": "logistics_network.db",
+    "shipment_id": 2990
+  },
+  "task_07": {
+    "db_path": "logistics_network.db"
+  },
+  "task_08": {
+    "db_path": "logistics_network.db",
+    "exact_regex": "^SKU-001\\d{2}-\\d{3}$"
+  },
+  "task_09": {
+    "db_path": "logistics_network.db"
+  },
+  "task_10": {
+    "db_path": "logistics_network.db",
+    "asset_threshold": 116539
+  },
+  "task_11": {
+    "db_path": "logistics_network.db",
+    "valid_source_types": [
+      "Port"
+    ]
+  },
+  "task_12": {
+    "db_path": "logistics_network.db",
+    "minimum_runs": 138
+  },
+  "task_13": {
+    "db_path": "logistics_network.db"
+  },
+  "task_14": {
+    "db_path": "logistics_network.db"
+  },
+  "task_15": {
+    "db_path": "logistics_network.db"
+  },
+  "task_16": {
+    "db_path": "logistics_network.db",
+    "start_bound": "2024-03-07 00:07:30",
+    "end_bound": "2024-09-12 05:07:26"
+  },
+  "task_17": {
+    "db_path": "logistics_network.db"
+  },
+  "task_18": {
+    "db_path": "logistics_network.db"
+  },
+  "task_19": {
+    "db_path": "logistics_network.db"
+  },
+  "task_20": {
+    "db_path": "logistics_network.db"
+  },
+  "task_21": {
+    "db_path": "logistics_network.db"
+  },
+  "task_22": {
+    "db_path": "logistics_network.db"
+  },
+  "task_23": {
+    "db_path": "logistics_network.db"
+  },
+  "task_24": {
+    "db_path": "logistics_network.db"
+  },
+  "task_25": {
+    "db_path": "logistics_network.db"
+  },
+  "task_26": {
+    "db_path": "logistics_network.db",
+    "start_employee_id": 434
+  },
+  "task_27": {
+    "db_path": "logistics_network.db",
+    "manager_id": 137
+  },
+  "task_28": {
+    "db_path": "logistics_network.db",
+    "origin_id": 18,
+    "terminal_id": 107
+  },
+  "task_29": {
+    "db_path": "logistics_network.db",
+    "origin_id": 18,
+    "terminal_id": 107
+  },
+  "task_30": {
+    "db_path": "logistics_network.db"
+  },
+  "task_31": {
+    "db_path": "logistics_network.db",
+    "item_sku": "SKU-00318-560"
+  },
+  "task_32": {
+    "db_path": "logistics_network.db",
+    "master_sku": "SKU-00006-207"
+  },
+  "task_33": {
+    "db_path": "logistics_network.db",
+    "source_node_id": 55,
+    "target_node_id": 58,
+    "blocked_node_id": 18
+  },
+  "task_34": {
+    "db_path": "logistics_network.db",
+    "start_node": 44,
+    "end_node": 48
+  },
+  "task_35": {
+    "db_path": "logistics_network.db"
+  }
+}
