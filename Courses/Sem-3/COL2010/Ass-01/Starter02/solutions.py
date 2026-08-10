@@ -133,16 +133,37 @@ def identify_highest_transit_delays(db_path: str, status_flag: str) -> pd.DataFr
     print("CARRIER_IDENTITY_STRING: {}".format(df.at[0,"carrier_name"].replace(" ","_")))
     return df
 
-identify_highest_transit_delays("logistics_network.db","Delivered")
+# identify_highest_transit_delays("logistics_network.db","Delivered")
 
+###################################################################################################################
+################################            Question    04          ###############################################
+###################################################################################################################
 def append_freight_risk_profiles(db_path: str, baseline_limit: float) -> pd.DataFrame:
-    """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
-    query = """
-    -- TODO: SQL query goes here.
     """
-    df = _read_sql(db_path, query)
+    TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, 
+    print the required summary line(s), and return the specified object.
+    """
+    query = """
+        SELECT base_cost_usd AS cost,
+            CASE 
+                WHEN base_cost_usd >= ?
+                THEN "High-Cost-Tier"
+                ELSE "Standard-Cost-Tier"
+            END AS risk_profile
+        FROM routes
+        
+    """
+    df = _read_sql(db_path, query,(baseline_limit,))
+
     # TODO: print the exact target output lines from the homework.
+    high_risk=(df["risk_profile"] == "High-Cost-Tier").sum()
+    print(f"HIGH_RISK_ROUTE_COUNT: {high_risk}")
+
+    ratio=high_risk / len(df)
+    print(f"RATIO_TO_TOTAL_SYSTEM: {ratio:.4f}")
     return df
+
+append_freight_risk_profiles("logistics_network.db",1000)
 
 def verify_candidate_presence(db_path: str, sku_id: str, node_id: int) -> bool:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
