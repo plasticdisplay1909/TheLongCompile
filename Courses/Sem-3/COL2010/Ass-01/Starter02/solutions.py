@@ -122,14 +122,14 @@ def identify_highest_transit_delays(db_path: str, status_flag: str) -> pd.DataFr
     print the required summary line(s), and return the specified object.
     """
     query = """
-        SELECT shipment_id,carrier_name, (julianday(arrival_timestamp) - julianday(departure_timestamp)) *24 as DURATION
+        SELECT shipment_id,carrier_name, (julianday(arrival_timestamp) - julianday(departure_timestamp)) *24 as duration
         FROM shipments
         where shipment_status=? AND arrival_timestamp IS NOT NULL
         ORDER BY duration DESC,shipment_id ASC;
     """
     df = _read_sql(db_path, query,(status_flag,))
     # TODO: print the exact target output lines from the homework.
-    print("LONGEST_TRANSIT_HOURS: {:.2f}".format(df.at[0,"DURATION"]))
+    print("LONGEST_TRANSIT_HOURS: {:.2f}".format(df.at[0,"duration"]))
     print("CARRIER_IDENTITY_STRING: {}".format(df.at[0,"carrier_name"].replace(" ","_")))
     return df
 
