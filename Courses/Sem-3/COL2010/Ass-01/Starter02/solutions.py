@@ -105,22 +105,35 @@ def extract_bounded_capacity_nodes(db_path: str, min_cap: float, max_cap: float)
 
     ## Counting average
     mean_cap=df["capacity_cubic_meters"].sum() / len(df)
-    print("FILTERED_RECORDS_COUNT:", len(df))
-    print("MEAN_EXTRACTED_CAPACITY:", mean_cap)
+    print("FILTERED_RECORDS_COUNT: ", len(df))
+    print("MEAN_EXTRACTED_CAPACITY: {:.2f}", mean_cap)
     return df
 
 # res=extract_bounded_capacity_nodes("logistics_network.db",5000,120000)
 # print(res)
 
 
+##############################################################################################################
+###########################             Question 03         ##################################################
+##############################################################################################################
 def identify_highest_transit_delays(db_path: str, status_flag: str) -> pd.DataFrame:
-    """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
-    query = """
-    -- TODO: SQL query goes here.
     """
-    df = _read_sql(db_path, query)
+    TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, 
+    print the required summary line(s), and return the specified object.
+    """
+    query = """
+        SELECT shipment_id,carrier_name, (julianday(arrival_timestamp) - julianday(departure_timestamp)) *24 as DURATION
+        FROM shipments
+        where shipment_status=? AND arrival_timestamp IS NOT NULL
+        ORDER BY duration DESC,shipment_id ASC;
+    """
+    df = _read_sql(db_path, query,(status_flag,))
     # TODO: print the exact target output lines from the homework.
+    print("LONGEST_TRANSIT_HOURS: {:.2f}".format(df.at[0,"DURATION"]))
+    print("CARRIER_IDENTITY_STRING: {}".format(df.at[0,"carrier_name"].replace(" ","_")))
     return df
+
+identify_highest_transit_delays("logistics_network.db","Delivered")
 
 def append_freight_risk_profiles(db_path: str, baseline_limit: float) -> pd.DataFrame:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
