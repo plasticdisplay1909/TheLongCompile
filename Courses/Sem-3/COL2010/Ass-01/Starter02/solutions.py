@@ -191,7 +191,7 @@ def verify_candidate_presence(db_path: str, sku_id: str, node_id: int) -> bool:
     print(f"CANDIDATE_MATCH_CONFIRMED: {result}")
     return result
 
-verify_candidate_presence("logistics_network.db",1,10)
+# verify_candidate_presence("logistics_network.db",1,10)
 
 
 ############################################################################################################
@@ -218,6 +218,8 @@ def calculate_shipment_manifest_mass(db_path: str, shipment_id: int) -> float:
     return float(mass)
 # calculate_shipment_manifest_mass("logistics_network.db",1)
 
+
+
 ###############################################################################################################
 ##############################          Question        07             #######################################
 ###############################################################################################################
@@ -228,12 +230,21 @@ def isolate_unreferenced_inventory_items(db_path: str) -> pd.DataFrame:
     """
 
     query = """
-        TODO:
+        SELECT inventory_items.*
+        FROM inventory_items
+        LEFT JOIN shipment_manifests
+            ON shipment_manifests.item_id = inventory_items.item_id
+        WHERE shipment_manifests.item_id IS NULL
     """
     df = _read_sql(db_path, query,())
     # TODO: print the exact target output lines from the homework.
+    # x=df.iloc[0]
+    print(f"ORPHAN_INVENTORY_ROW_COUNT: {len(df)}")
     return df
+isolate_unreferenced_inventory_items("logistics_network.db")
 
+###############################################################################################################
+#####################################       Question        08          #######################################
 def filter_sku_by_regex_pattern(db_path: str, exact_regex: str) -> list[str]:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
     query = """
