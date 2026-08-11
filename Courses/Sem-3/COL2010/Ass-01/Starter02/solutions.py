@@ -264,26 +264,69 @@ def filter_sku_by_regex_pattern(db_path: str, exact_regex: str) -> list[str]:
     return result
 # filter_sku_by_regex_pattern("logistics_network.db","0002")
 
+
+##############################################################################################################
+############################        Question         09                  #####################################
+##############################################################################################################
+
 def sequence_carrier_allocations(db_path: str) -> pd.DataFrame:
-    """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
+    """
+    TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, 
+    print the required summary line(s), and return the specified object.
+    """
     query = """
-    -- TODO: SQL query goes here.
+        SELECT 
+            total_freight_cost_usd, 
+            shipment_status,
+            CASE
+                WHEN shipment_status = "Delayed" THEN 1
+                WHEN shipment_status = "In Transit" THEN 2
+                WHEN shipment_status = "Pending" THEN 3
+                WHEN shipment_status = "Delivered" THEN 4
+            END AS delay_rank
+        FROM shipments
+        ORDER BY total_freight_cost_usd DESC, delay_rank;
+
     """
     df = _read_sql(db_path, query)
     # TODO: print the exact target output lines from the homework.
+    x=df.iloc[0].replace(" ","_")
+    print("TOP_CARRIER_ROW_HASH:", x.replace(" ","_"))
     return df
+# sequence_carrier_allocations("logistics_network.db")
 
+
+##############################################################################################################
+############################        Question         10                  #####################################
+##############################################################################################################
 def identify_high_density_warehouses(db_path: str, asset_threshold: int) -> list[int]:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
     query = """
-    -- TODO: SQL query goes here.
+        SELECT node_id
+        FROM nodes
+        WHERE (
+            SELECT SUM(quantity)
+            FROM node_inventory
+            WHERE node_inventory.node_id = nodes.node_id
+        ) > ?;
     """
-    df = _read_sql(db_path, query)
-    # TODO: convert the relevant column to a Python list and print the target line.
-    return []
+    df = _read_sql(db_path, query,(asset_threshold,))
+    result=df["node_id"].tolist()
 
+    # TODO: convert the relevant column to a Python list and print the target line.
+    print(f"HIGH_DENSITY_STATIONS_COUNT: {len(result)}")
+    return result
+
+# identify_high_density_warehouses("logistics_network.db",10000)
+
+##############################################################################################################
+############################        Question         11                  #####################################
+##############################################################################################################
 def filter_routes_by_source_inclusion(db_path: str, valid_source_types: list[str]) -> pd.DataFrame:
-    """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
+    """
+    TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, 
+    print the required summary line(s), and return the specified object.
+    """
     query = """
     -- TODO: SQL query goes here.
     """
@@ -294,7 +337,8 @@ def filter_routes_by_source_inclusion(db_path: str, valid_source_types: list[str
 def aggregate_carrier_performance(db_path: str, minimum_runs: int) -> pd.DataFrame:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
     query = """
-    -- TODO: SQL query goes here.
+        SELECT item_id,item_id
+        FROM 
     """
     df = _read_sql(db_path, query)
     # TODO: print the exact target output lines from the homework.
