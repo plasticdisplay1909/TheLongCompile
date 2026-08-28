@@ -85,8 +85,13 @@ def binary_similarities(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
     return (float(jac),float(cos))
 
 
+from rapidfuzz.distance import Levenshtein
 def levenshtein_pair(a: str, b: str) -> tuple[int, float]:
-    raise NotImplementedError
+    # raise NotImplementedError
+    d=Levenshtein.distance(a,b)
+    s=Levenshtein.normalized_similarity(a,b)
+
+    return (int(d),float(s))
 
 
 def jaro_winkler_pair(a: str, b: str) -> float:
