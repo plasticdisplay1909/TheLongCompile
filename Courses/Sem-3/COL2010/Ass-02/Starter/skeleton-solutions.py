@@ -36,7 +36,16 @@ def profile_column(frame: pd.DataFrame, column: str) -> dict:
             }
 
 # "Checking output of question 1"
+
 # frame=pd.read_csv("contacts.csv")
+# print(profile_column(frame,'phone'))
+# print(profile_column(frame,'contact_id'))
+
+frame=pd.read_csv('customers.csv')
+# print(profile_column(frame,'customer_id'))
+# print(profile_column(frame,'household_size'))
+# print(profile_column(frame,'annual_income'))
+# print(profile_column(frame,'city'))
 # print(profile_column(frame,'phone'))
 
 
