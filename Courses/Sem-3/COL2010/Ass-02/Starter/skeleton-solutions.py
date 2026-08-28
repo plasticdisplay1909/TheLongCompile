@@ -35,20 +35,53 @@ def profile_column(frame: pd.DataFrame, column: str) -> dict:
         "q1":q1,'q3':q3        
             }
 
-from scipy.spatial.distance import euclidean,mahalanobis
 def top_category_frequencies(frame: pd.DataFrame, column: str, k: int) -> pd.DataFrame:
+    raise NotImplementedError
+
+from scipy.spatial.distance import euclidean,cityblock
+def numeric_distances(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
     # raise NotImplementedError
-    e=euclidean
-    m=
+    e=euclidean(x,y)
+    m=cityblock(x,y)
+
     return (e,m)
 
+# Using library
+from scipy.spatial.distance import jaccard,cosine
+def binary_similarities_copy(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
+    # raise NotImplementedError
+    
+    # Jaccard similarity
+    j=1-jaccard(x,y)
 
-def numeric_distances(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
-    raise NotImplementedError
+    x0,y0=np.all(x==0),np.all(y==0)     ## Returns if all elements are zero
 
+    # Predefined
+    if x0 and y0:   c=1.0
+    elif x0 or y0:   c=0.0
+    
+    ## Seems to be a flaw over here as scipy cosine returns distance and not similarity
+    else: c=cosine(x,y)
+
+    return (j,c)
 
 def binary_similarities(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
-    raise NotImplementedError
+    # raise NotImplementedError
+    j1=np.sum((x==1) & (y==1))
+    j2=np.sum((x==1) or (y==1))
+
+    jac=j1/j2
+
+    dot=np.dot(x,y)
+    len_x=np.sqrt(np.sum(x**2))
+    len_y=np.sqrt(np.sum(y**2))
+
+    if (len_x ==0 and len_y ==0):   cos=1.0
+    elif (len_x==0 or len_y==0):     cos=0.0
+    else:
+        cos=(dot)/(len_x * len_y)
+    
+    return (float(jac),float(cos))
 
 
 def levenshtein_pair(a: str, b: str) -> tuple[int, float]:
