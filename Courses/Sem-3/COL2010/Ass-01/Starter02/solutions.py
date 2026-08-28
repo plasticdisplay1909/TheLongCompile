@@ -334,15 +334,32 @@ def filter_routes_by_source_inclusion(db_path: str, valid_source_types: list[str
     # TODO: print the exact target output lines from the homework.
     return df
 
+
+################################################################################################################
+##########################               Question            12                          #######################
+################################################################################################################
 def aggregate_carrier_performance(db_path: str, minimum_runs: int) -> pd.DataFrame:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
     query = """
-        SELECT item_id,item_id
-        FROM 
+        SELECT 
+            carrier_name,
+            COUNT(*) AS total_runs,
+            SUM(freight_volume) AS total_volume,
+            AVG(freight_cost) AS avg_cost
+
+        FROM shipments
+        GROUP BY carrier_name
+        HAVING COUNT(*) >= ?
+        ORDER BY total_volume DESC; 
+
     """
-    df = _read_sql(db_path, query)
+    df = _read_sql(db_path, query, (minimum_runs,))
     # TODO: print the exact target output lines from the homework.
+
+    print(f"QUALIFIED_CARRIERS_COUNT: {len(df)}")
+    print(f"AGGREGATE_SYSTEM_VOLUME_USD: {df['total_volume'].sum():.2f}")
     return df
+aggregate_carrier_performance("logisitics_network.db",10)
 
 def locate_outlier_salaries_by_hub(db_path: str) -> pd.DataFrame:
     """TODO: Write the raw SQL for this task, execute it using sqlite3/pandas, print the required summary line(s), and return the specified object."""
