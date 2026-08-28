@@ -1,0 +1,123 @@
+{
+  "seed": 2010,
+  "reference_date": "2026-01-01",
+  "valid_age_range": [
+    0,
+    120
+  ],
+  "valid_email_regex": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+  "city_aliases": {
+    "bengaluru": "Bengaluru",
+    "bangalore": "Bengaluru",
+    "bengluru": "Bengaluru",
+    "chennai": "Chennai",
+    "madras": "Chennai",
+    "chenai": "Chennai",
+    "delhi": "Delhi",
+    "new delhi": "Delhi",
+    "dilli": "Delhi",
+    "hyderabad": "Hyderabad",
+    "hyd": "Hyderabad",
+    "hyderbad": "Hyderabad",
+    "kolkata": "Kolkata",
+    "calcutta": "Kolkata",
+    "kolkatta": "Kolkata",
+    "mumbai": "Mumbai",
+    "bombay": "Mumbai",
+    "mumbay": "Mumbai",
+    "pune": "Pune",
+    "poona": "Pune",
+    "puna": "Pune",
+    "jaipur": "Jaipur",
+    "jaypur": "Jaipur",
+    "kochi": "Kochi",
+    "cochin": "Kochi",
+    "kochin": "Kochi",
+    "ahmedabad": "Ahmedabad",
+    "ahemdabad": "Ahmedabad",
+    "lucknow": "Lucknow",
+    "lakhnau": "Lucknow",
+    "bhopal": "Bhopal",
+    "bhopl": "Bhopal"
+  },
+  "toolbox": {
+    "profile_columns": [
+      "age",
+      "annual_income",
+      "household_size"
+    ],
+    "frequency_k": 10,
+    "knn_k": 5,
+    "lof_neighbors": 20
+  },
+  "entity_weights": {
+    "name_sim": 0.3,
+    "email_sim": 0.25,
+    "phone_agree": 0.2,
+    "city_agree": 0.1,
+    "dob_agree": 0.15
+  },
+  "entity_thresholds": {
+    "lower": 0.58,
+    "upper": 0.8
+  },
+  "missingness_examples": {
+    "MCAR": {
+      "target": "phone",
+      "conditioning": [
+        "city",
+        "age"
+      ]
+    },
+    "MAR": {
+      "target": "household_size",
+      "conditioning": [
+        "city",
+        "age"
+      ]
+    },
+    "MNAR": {
+      "target": "annual_income",
+      "conditioning": [
+        "city",
+        "age"
+      ]
+    }
+  },
+  "imputation_k": 5,
+  "imputation_random_state": 2010,
+  "outlier_contamination": 0.02,
+  "lof_neighbors": 20,
+  "outlier_numeric_columns": [
+    "age",
+    "annual_income",
+    "household_size"
+  ],
+  "model_numeric_columns": [
+    "age",
+    "annual_income",
+    "household_size"
+  ],
+  "model_categorical_columns": [
+    "city"
+  ],
+  "engineered_features": [
+    "row mean over the imputed numerical columns",
+    "interaction between the first two imputed numerical columns"
+  ],
+  "input_files": {
+    "customers": "customers.csv",
+    "transactions": "transactions.csv",
+    "contacts": "contacts.csv",
+    "parameters": "module2_parameters.json",
+    "student_arrays": "module2_inputs.npz",
+    "exploration_gold": "module2_gold.npz"
+  },
+  "notes": {
+    "gold_usage": "module2_gold.npz is for explicitly labelled Exploration components only. Autograded functions are tested on hidden inputs.",
+    "blocking_pass_1": "same canonical city and same birth year",
+    "blocking_pass_2": "same final four standardized phone digits",
+    "task20": "Use module2_inputs.npz keys imputation_complete_subset and imputation_evaluation_mask; k and random_state come from module2_parameters.json.",
+    "task23": "Use module2_inputs.npz keys train_indices and test_indices; column lists come from module2_parameters.json."
+  }
+}
