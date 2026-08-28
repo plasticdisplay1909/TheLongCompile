@@ -35,22 +35,12 @@ def profile_column(frame: pd.DataFrame, column: str) -> dict:
         "q1":q1,'q3':q3        
             }
 
-# "Checking output of question 1"
-
-# frame=pd.read_csv("contacts.csv")
-# print(profile_column(frame,'phone'))
-# print(profile_column(frame,'contact_id'))
-
-frame=pd.read_csv('customers.csv')
-# print(profile_column(frame,'customer_id'))
-# print(profile_column(frame,'household_size'))
-# print(profile_column(frame,'annual_income'))
-# print(profile_column(frame,'city'))
-# print(profile_column(frame,'phone'))
-
-
+from scipy.spatial.distance import euclidean,mahalanobis
 def top_category_frequencies(frame: pd.DataFrame, column: str, k: int) -> pd.DataFrame:
-    raise NotImplementedError
+    # raise NotImplementedError
+    e=euclidean
+    m=
+    return (e,m)
 
 
 def numeric_distances(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
