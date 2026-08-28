@@ -68,9 +68,10 @@ def binary_similarities_copy(x: np.ndarray, y: np.ndarray) -> tuple[float, float
 def binary_similarities(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
     # raise NotImplementedError
     j1=np.sum((x==1) & (y==1))
-    j2=np.sum((x==1) or (y==1))
-
-    jac=j1/j2
+    j2=np.sum((x==1) | (y==1))
+    
+    if j2==0:   jac=1.0
+    else:    jac=j1/j2
 
     dot=np.dot(x,y)
     len_x=np.sqrt(np.sum(x**2))
@@ -79,7 +80,7 @@ def binary_similarities(x: np.ndarray, y: np.ndarray) -> tuple[float, float]:
     if (len_x ==0 and len_y ==0):   cos=1.0
     elif (len_x==0 or len_y==0):     cos=0.0
     else:
-        cos=(dot)/(len_x * len_y)
+        cos=1-(dot)/(len_x * len_y)
     
     return (float(jac),float(cos))
 
