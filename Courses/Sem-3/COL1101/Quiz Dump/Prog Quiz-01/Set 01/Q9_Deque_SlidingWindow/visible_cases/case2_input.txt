@@ -1,0 +1,7 @@
+9
+9 5 3 4 8 2 1 7 6
+4
+BRUTE 4
+FAST 4
+BRUTE 1
+FAST 1

@@ -1,0 +1,142 @@
+[
+ {
+  "name": "single_producer_single_consumer",
+  "input": "2\n1\n10\n1\n",
+  "expected": "OK\n10\n",
+  "marks": 2,
+  "timeout": 10
+ },
+ {
+  "name": "capacity_one_forces_blocking",
+  "input": "1\n2\n20\n2\n",
+  "expected": "OK\n40\n",
+  "marks": 4,
+  "timeout": 10
+ },
+ {
+  "name": "many_producers_one_consumer",
+  "input": "5\n8\n15\n1\n",
+  "expected": "OK\n120\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "one_producer_many_consumers",
+  "input": "5\n1\n100\n8\n",
+  "expected": "OK\n100\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "balanced_many_to_many",
+  "input": "10\n6\n40\n6\n",
+  "expected": "OK\n240\n",
+  "marks": 4,
+  "timeout": 10
+ },
+ {
+  "name": "large_buffer_capacity",
+  "input": "1000\n4\n50\n4\n",
+  "expected": "OK\n200\n",
+  "marks": 2,
+  "timeout": 10
+ },
+ {
+  "name": "zero_items_edge_case",
+  "input": "5\n3\n0\n3\n",
+  "expected": "OK\n0\n",
+  "marks": 1,
+  "timeout": 10
+ },
+ {
+  "name": "capacity_one_single_pair_moderate",
+  "input": "1\n1\n200\n1\n",
+  "expected": "OK\n200\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "more_consumers_than_items",
+  "input": "4\n1\n3\n10\n",
+  "expected": "OK\n3\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "stress_many_threads_small_buffer",
+  "input": "3\n10\n30\n10\n",
+  "expected": "OK\n300\n",
+  "marks": 4,
+  "timeout": 12
+ },
+ {
+  "name": "repeat_config_0",
+  "input": "2\n4\n25\n4\n",
+  "expected": "OK\n100\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "repeat_config_1",
+  "input": "1\n3\n30\n3\n",
+  "expected": "OK\n90\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "repeat_config_2",
+  "input": "5\n5\n20\n5\n",
+  "expected": "OK\n100\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "repeat_config_3",
+  "input": "3\n6\n10\n2\n",
+  "expected": "OK\n60\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "repeat_config_4",
+  "input": "7\n2\n60\n3\n",
+  "expected": "OK\n120\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "repeat_config_5",
+  "input": "1\n5\n15\n5\n",
+  "expected": "OK\n75\n",
+  "marks": 3,
+  "timeout": 10
+ },
+ {
+  "name": "large_scale_capacity_one_deadlock_catcher",
+  "input": "1\n4\n400\n4\n",
+  "expected": "OK\n1600\n",
+  "marks": 5,
+  "timeout": 15
+ },
+ {
+  "name": "large_scale_moderate_buffer",
+  "input": "20\n8\n200\n8\n",
+  "expected": "OK\n1600\n",
+  "marks": 4,
+  "timeout": 15
+ },
+ {
+  "name": "asymmetric_one_heavy_producer",
+  "input": "10\n1\n500\n10\n",
+  "expected": "OK\n500\n",
+  "marks": 3,
+  "timeout": 15
+ },
+ {
+  "name": "extreme_contention_single_pair",
+  "input": "1\n1\n1000\n1\n",
+  "expected": "OK\n1000\n",
+  "marks": 4,
+  "timeout": 15
+ }
+]

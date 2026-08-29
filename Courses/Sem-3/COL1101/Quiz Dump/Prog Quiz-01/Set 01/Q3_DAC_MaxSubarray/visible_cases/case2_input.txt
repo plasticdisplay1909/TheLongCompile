@@ -1,0 +1,7 @@
+6
+5 -2 -3 8 -1 2
+4
+BRUTE
+DC
+RANGE 0 2
+RANGE 3 5

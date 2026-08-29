@@ -1,0 +1,4 @@
+A [CAR] revenue=0.00 days=0 status=MAINTENANCE
+B [CAR] revenue=50.00 days=5 status=AVAILABLE
+TIE
+A

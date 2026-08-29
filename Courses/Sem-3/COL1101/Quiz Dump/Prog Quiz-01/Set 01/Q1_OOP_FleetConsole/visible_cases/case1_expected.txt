@@ -1,0 +1,5 @@
+C1 [CAR] revenue=150.00 days=3 status=AVAILABLE
+T1 [TRUCK] revenue=180.00 days=2 status=AVAILABLE
+T1
+330.00
+T1
