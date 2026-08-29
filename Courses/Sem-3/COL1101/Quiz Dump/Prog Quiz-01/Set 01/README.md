@@ -1,5 +1,15 @@
 # COL106 / COL1101 Practice Quiz Set (10 Problems)
 
+## Personal Suggestion
+1. Copy the student code and do it in Moodle VPL (Don't use VS code for coding)
+2. Try to solve each questions in 1 hour as we don't know what would be the number of questions during the lab quiz
+3. To test your cases, open VS code and do the following commands one by one. Like for each question copy the original folder name. Do not change any file names
+     - ```cd Q1_OOP_FleetConsole```
+     - ```python grader.py```
+
+
+#### This has been made entirely using Claude Sonnet 5 Medium
+
 This archive contains 10 original practice problems in the style of the
 course's CSE Moodle VPL lab assignments, covering: OOP, functional
 programming, asymptotic analysis / divide-and-conquer, arrays, linked
@@ -7,10 +17,7 @@ lists, Set/Queue/Sequence ADTs, concurrency, and stacks/queues and
 their applications.
 
 ## Contents
-
-- `question_paper.pdf` -- the full problem set (read this first). Each
-  problem is ~1000-1200 words with a story, exact I/O spec, worked
-  examples, and grading notes, ordered by increasing difficulty.
+- `question_paper.pdf`
 - `Q1_OOP_FleetConsole/` ... `Q10_LRU_Cache/` -- one folder per problem,
   each containing:
   - `student_code.py` -- the starter file. Fill in every function/method
@@ -42,3 +49,5 @@ their applications.
    have tight performance requirements.
 
 Good luck.
+
+
